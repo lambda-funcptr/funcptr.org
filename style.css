@@ -1,0 +1,55 @@
+body {
+    background: beige;
+}
+
+#monitorbox {
+    background: beige;
+    padding: 10px;
+}
+
+#content {
+    background: #1F1F1F;
+    padding-left: 1em;
+    padding-right: 1em;
+    padding-top: 1em;
+    padding-bottom: 1em;
+    width: 80ch;
+    height: 32em;
+    margin: auto;
+
+    color: #FFB000;
+}
+
+p {
+    margin: 2px;
+    font-family: "Lucida Console", Monaco, monospace;
+}
+
+a {
+    margin: 2px;
+    font-family: "Lucida Console", Monaco, monospace;
+    color: #FFB000;
+}
+
+a:hover {
+    margin: 2px;
+    font-family: "Lucida Console", Monaco, monospace;
+    color: #FFB000;
+    animation: blinkingText 1.2s infinite;
+}
+
+.blink{
+    animation: blinkingText 1.2s infinite;
+}
+
+.selected {
+    background: #FFB000; color: #1F1F1F;
+}
+
+@keyframes blinkingText{
+    0%      {   background: #FFB000; color: #1F1F1F;   }
+    50%     {   background: #FFB000; color: #1F1F1F;   }
+    60%     {   background: #1F1F1F; color: #FFB000;   }
+    99%     {   background: #1F1F1F; color: #FFB000;   }
+    100%    {   background: #FFB000; color: #1F1F1F;   }
+}
