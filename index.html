@@ -1,30 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>funcptr.org</title>
-    <link rel="stylesheet" href="style.css"/>
-</head>
-<body>
+---
+title: Home
+---
 
-<div id="monitorbox">
-<div id="content">
-    <p><b>+-------------+</b></p>
-    <p><b>| funcptr.org |</b></p>
-    <p><b>+-------------+</b></p>
-    <br>
-    <p>Welcome to funcptr.org. There isn't a lot of things here right now, but hopefully that'll change.</p>
+<h2>Welcome</h2>
 
-    <br>
+<p>Welcome to funcptr.org. There isn't a lot of things here right now, but hopefully that'll change.</p>
 
-    <p>Some of the things that are here though:</p>
-    <p>&emsp;- <a href="https://matrix.to/#/#general:funcptr.org">Matrix Server</a></p>
-    <p>&emsp;- <a href="chat/">Element Web Client</a></p>
-    <p>&emsp;- <a href="distmc.html">Distributed Minecraft(?)</a></p>
+<p>Here's some personal projects of mine:</p>
 
-    <p>Also check out my <a href="https://github.com/lambda-funcptr">github profile</a>, which includes this website and my homelab setup.</p>
-</div>
-</div>
+<h3>Projects</h3>
+$partial("templates/project-list.html")$
 
-</body>
-</html>
+<br>
+<hr/>
+
+Here's also a list of posts from my blog:
+
+<h3>Posts</h3>
+$partial("templates/post-list.html")$
+
+<p>…or you can find more in the <a href="/archive.html">archives</a>.</p>

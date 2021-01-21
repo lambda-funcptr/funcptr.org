@@ -1,0 +1,5 @@
+#!/bin/bash
+
+cd $(dirname "$0")
+
+cabal run --ghc-options=-dynamic funcptr-org $@

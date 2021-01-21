@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>funcptr.org</title>
+    <link rel="stylesheet" href="style.css"/>
+</head>
+<body>
+
+<div id="monitorbox">
+<div id="content">
+    <p><b>+-------------+</b></p>
+    <p><b>| funcptr.org |</b></p>
+    <p><b>+-------------+</b></p>
+    <br>
+    <p>Welcome to funcptr.org. There isn't a lot of things here right now, but hopefully that'll change.</p>
+
+    <br>
+
+    <p>Some of the things that are here though:</p>
+    <p>&emsp;- <a href="https://matrix.to/#/#general:funcptr.org">Matrix Server</a></p>
+    <p>&emsp;- <a href="chat/">Element Web Client</a></p>
+    <p>&emsp;- <a href="distmc.html">Distributed Minecraft(?)</a></p>
+
+    <p>Also check out my <a href="https://github.com/lambda-funcptr">github profile</a>, which includes this website and my homelab setup.</p>
+</div>
+</div>
+
+</body>
+</html>
