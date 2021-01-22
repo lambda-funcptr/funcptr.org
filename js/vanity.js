@@ -1,6 +1,8 @@
 var headerRedrawQueued = false;
 
 document.addEventListener('DOMContentLoaded', (event) => {
+    var seed = Math.random() * 1000;
+
     var headerShaderReq = new XMLHttpRequest();
 
     headerShaderReq.onreadystatechange = function() {
@@ -84,7 +86,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
 
             function redrawHeader (timestamp) {
-                var phase = 0.001 * timestamp + window.scrollY;
+                var phase = 0.001 * timestamp + window.scrollY + seed;
 
                 gl.uniform2fv(screenSizeUniformLoc, [headerCanvas.width, headerCanvas.height]);
                 gl.uniform1f(phaseUniformLoc, phase);
