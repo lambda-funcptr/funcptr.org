@@ -2,6 +2,11 @@
     $for(projects)$
         <li>
             <a href="$url$">$title$</a>: $description$
+            $if(repo)$
+            <span style="float:right; opacity: 50%;">
+                <a href="$repo$" style="color: lightslategray">repo</a>
+            </span>
+            $endif$
         </li>
     $endfor$
 </ul>

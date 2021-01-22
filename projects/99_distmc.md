@@ -1,6 +1,7 @@
 ---
-title: distmc
-description: A.K.A. Distributed Minecraft. This was a joke. It's no longer funny.
+title: Distributed Minecraft
+description: A.K.A. distmc. This was a joke. It's no longer funny.
+repo: https://github.com/lambda-funcptr/distmc
 ---
 
 ## What it is
@@ -16,7 +17,7 @@ In retrospect. This is a pretty bad move.
 
 ## How it works
 
-Distributed Minecraft works by running a (containerized) L7 proxy (Bungeecord) that sits infront of a (containerized) Minecraft server on the same server (current part of [funcptr CDN](funcptr-cdn.html)), and then using portals and commands to direct players from the lobby to servers run by other people.
+Distributed Minecraft works by running a (containerized) L7 proxy (Bungeecord) that sits infront of a (containerized) Minecraft server on the same server (current part of [funcptr CDN](02-funcptr-cdn.html)), and then using portals and commands to direct players from the lobby to servers run by other people.
 
 ## The Drawbacks
 
@@ -32,8 +33,8 @@ That being said, it's mostly alright as long as the servers on the other end:
 
 There's basically no benefits. 
 
-Theoretically speaking, you *may* see better latency if you have a situation where a server operator's path to an end-user is bad, but the proxy host has a good route to both the end-user and the server operator.
-This may be the case, but I've never seen it actually reduce latency.
+Theoretically speaking, you *may* see better latency if you have a situation where a server operator's path to an end-user is bad, but the proxy host has a good route to both the end-user and the server operator. 
+Alyx from [en0.io](https://en0.io/) testified to a case where a "dumb" nginx proxy did reduce latency significantly for someone in Australia, but I don't really know how common this scenario is, or if they're telling the truth, or if Australia exists.
 
 The other theoretical benefit is being able to run the GeyserMC Bedrock Minecraft to Java Minecraft proxy, which means that server operators are now capable of connecting Bedrock users on Java without needing to do any work on their side aside from set up distmc.
 
