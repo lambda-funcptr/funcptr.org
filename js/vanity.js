@@ -1,15 +1,14 @@
-var headerRedrawQueued = false;
+let headerRedrawQueued = false;
 
 document.addEventListener('DOMContentLoaded', (event) => {
-    var seed = Math.random() * 1000;
-
-    var headerShaderReq = new XMLHttpRequest();
+    const seed = Math.random() * 1000;
+    let headerShaderReq = new XMLHttpRequest();
 
     headerShaderReq.onreadystatechange = function() {
-        if (this.readyState == 4 && this.status == 200) {
-            var headerCanvas = document.getElementById("headerCanvas");
-            var gl = headerCanvas.getContext('webgl2');
-            
+        if (headerShaderReq.readyState === 4 && headerShaderReq.status === 200) {
+            const headerCanvas = document.getElementById("headerCanvas");
+            const gl = headerCanvas.getContext('webgl2');
+
             headerCanvas.width = headerCanvas.clientWidth;
             headerCanvas.height = headerCanvas.clientHeight;
             gl.viewport(0, 0, headerCanvas.width, headerCanvas.height);
@@ -17,7 +16,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             gl.clearColor(0.0, 0.0, 0.0, 0.0);
             gl.clear(gl.COLOR_BUFFER_BIT);
 
-            var emptyVertShader = gl.createShader(gl.VERTEX_SHADER);
+            let emptyVertShader = gl.createShader(gl.VERTEX_SHADER);
             gl.shaderSource(emptyVertShader, `#version 300 es
 
             in vec2 vertPos;
@@ -31,13 +30,13 @@ document.addEventListener('DOMContentLoaded', (event) => {
             if (!gl.getShaderParameter(emptyVertShader, gl.COMPILE_STATUS))
                 console.error(gl.getShaderInfoLog(emptyVertShader));
 
-            var headerShader = gl.createShader(gl.FRAGMENT_SHADER);
+            let headerShader = gl.createShader(gl.FRAGMENT_SHADER);
             gl.shaderSource(headerShader, headerShaderReq.responseText);
             gl.compileShader(headerShader);
             if (!gl.getShaderParameter(headerShader, gl.COMPILE_STATUS))
                 console.error(gl.getShaderInfoLog(headerShader));
 
-            var program = gl.createProgram();
+            let program = gl.createProgram();
             gl.attachShader(program, emptyVertShader);
             gl.attachShader(program, headerShader);
             gl.linkProgram(program);
@@ -55,14 +54,14 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             gl.useProgram(program);
 
-            var phaseUniformLoc = gl.getUniformLocation(program, "phase");
-            var screenSizeUniformLoc = gl.getUniformLocation(program, "screenSize");
-            var xScaleUniformLoc = gl.getUniformLocation(program, "xScale");
+            let phaseUniformLoc = gl.getUniformLocation(program, "phase");
+            let screenSizeUniformLoc = gl.getUniformLocation(program, "screenSize");
+            let xScaleUniformLoc = gl.getUniformLocation(program, "xScale");
 
-            var buffer = gl.createBuffer();
+            let buffer = gl.createBuffer();
             gl.bindBuffer(gl.ARRAY_BUFFER, buffer);
 
-            var vertices = new Float32Array([
+            const vertices = new Float32Array([
                 -1, 1,
                 1, 1,
                 1, -1,
@@ -73,7 +72,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
 
             gl.bufferData(gl.ARRAY_BUFFER, vertices, gl.STATIC_DRAW);
 
-            var vertAttrib = gl.getAttribLocation(program, "vertPos");
+            let vertAttrib = gl.getAttribLocation(program, "vertPos");
 
             gl.enableVertexAttribArray(vertAttrib);
             gl.vertexAttribPointer(vertAttrib, 2, gl.FLOAT, false, 0, 0);
@@ -86,7 +85,7 @@ document.addEventListener('DOMContentLoaded', (event) => {
             }
 
             function redrawHeader (timestamp) {
-                var phase = 0.001 * timestamp + window.scrollY + seed;
+                let phase = 0.001 * timestamp + window.scrollY + seed;
 
                 gl.uniform2fv(screenSizeUniformLoc, [headerCanvas.width, headerCanvas.height]);
                 gl.uniform1f(phaseUniformLoc, phase);
