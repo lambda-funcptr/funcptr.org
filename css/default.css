@@ -1,6 +1,9 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
 html {
-  font-size: 80%;
-  font-family: 'Open Sans', sans-serif;
+  font-smooth: auto;
+  font-size: 11pt;
+  font-family: 'Roboto', sans-serif;
 }
 
 #body {
@@ -37,10 +40,9 @@ nav a:hover {
 }
 
 footer {
+  font-size: 8pt;
   margin-top: 3rem;
   padding: 1.2rem 0;
-  border-top: 0.2rem solid #000;
-  font-size: 1.2rem;
   color: #555;
 }
 
@@ -85,6 +87,7 @@ article .header {
 
   header {
     margin: 0.2rem 0;
+    height: 14rem;
   }
 
   nav {
@@ -93,6 +96,7 @@ article .header {
   }
   footer {
     text-align: center;
+    height: 10rem;
   }
   .logo {
     text-align: center;
@@ -122,6 +126,7 @@ article .header {
 
   header {
     margin: 4.2rem 0;
+    height: 14rem;
   }
   nav {
     margin: 0 auto 3rem;
@@ -160,6 +165,7 @@ article .header {
     margin: 0;
     padding: 0.1rem 0;
     position: fixed;
+    height: 8rem;
   }
 
   #headerSpacer {
