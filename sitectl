@@ -3,3 +3,7 @@
 cd $(dirname "$0")
 
 cabal run --ghc-options=-dynamic funcptr-org $@
+
+if [[ "$1" == "build" ]]; then
+  tar -czvf funcptr.org.tar.gz -C _site .
+fi
