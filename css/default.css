@@ -85,9 +85,14 @@ article .header {
     padding: 0 5%;
   }
 
+  #logoImage {
+    visibility: hidden;
+    position: absolute;
+  }
+
   header {
     margin: 0.2rem 0;
-    height: 14rem;
+    height: 18rem;
   }
 
   nav {
@@ -118,10 +123,18 @@ article .header {
     padding: 0 5%;
   }
 
-  #headerContent {
+  .headerContent {
     width: 90%;
     margin: 0;
     padding: 0 5%;
+  }
+
+  #logoImage {
+    z-index: -10;
+    display: inline;
+    position: absolute;
+    bottom: 0.5em;
+    width: 4em;
   }
 
   header {
@@ -161,6 +174,15 @@ article .header {
     padding: 0;
   }
 
+  #logoImage {
+    z-index: -10;
+    margin: auto;
+    display: inline;
+    position: absolute;
+    bottom: 0.5em;
+    width: 4em;
+  }
+
   header {
     margin: 0;
     padding: 0.1rem 0;
@@ -172,7 +194,6 @@ article .header {
     height: 10rem;
     z-index: 100;
   }
-
 
   nav {
     margin: 0;

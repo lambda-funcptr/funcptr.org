@@ -2,4 +2,17 @@
 
 cd $(dirname "$0")
 
+if [[ "$1" == "deploy" ]]; then
+  echo "Keyfile Location:"
+  read SSH_KEYFILE;
+
+  if [ -z "$SSH_KEYFILE" ]; then
+    exit -1;
+  fi
+
+  rsync -e "ssh -i $SSH_KEYFILE" -a _site/ debian@funcptr.org:/home/debian/funcptr.org
+
+  ssh -i $SSH_KEYFILE debian@funcptr.org -C "sudo rm -rf /srv/funcptr.org/*; sudo cp -R /home/debian/funcptr.org /srv/"
+fi
+
 cabal run --ghc-options=-dynamic funcptr-org $@
