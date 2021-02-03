@@ -17,7 +17,7 @@ In retrospect. This is a pretty bad move.
 
 ## How it works
 
-Distributed Minecraft works by running a (containerized) L7 proxy (Bungeecord) that sits infront of a (containerized) Minecraft server on the same server (current part of [funcptr CDN](02-funcptr-cdn.html)), and then using portals and commands to direct players from the lobby to servers run by other people.
+Distributed Minecraft works by running a (containerized) L7 proxy (Bungeecord) that sits infront of a (containerized) Minecraft server on the same server (current part of [funcptr CDN](02_funcptr-cdn.html)), and then using portals and commands to direct players from the lobby to servers run by other people.
 
 ## The Drawbacks
 

@@ -1,18 +1,18 @@
 #!/bin/bash
 
+set -e
+
 cd $(dirname "$0")
 
 if [[ "$1" == "deploy" ]]; then
-  echo "Keyfile Location:"
-  read SSH_KEYFILE;
-
-  if [ -z "$SSH_KEYFILE" ]; then
-    exit -1;
+  if [ -z "$2" ]; then
+    echo "Usage: sitectl deploy [keyfile]"
+    exit 0;
   fi
 
-  rsync -e "ssh -i $SSH_KEYFILE" -a _site/ debian@funcptr.org:/home/debian/funcptr.org
-
-  ssh -i $SSH_KEYFILE debian@funcptr.org -C "sudo rm -rf /srv/funcptr.org/*; sudo cp -R /home/debian/funcptr.org /srv/"
+  ssh -i $2 push@master.cdn.funcptr.org "mkdir -p /srv/cdn/funcptr.org"
+  rsync -e "ssh -i $2" -a _site/ push@master.cdn.funcptr.org:/srv/cdn/funcptr.org/
+  exit 0;
 fi
 
 cabal run --ghc-options=-dynamic funcptr-org $@

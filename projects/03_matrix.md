@@ -12,4 +12,4 @@ My matrix homeserver works and has relatively high uptime, but it's still missin
 
 ## Element
 
-I'm currently running a functional Element Matrix client accessible [here](https://funcptr.org/chat), along with some self-hosted integrations.
+I'm currently running a functional Element Matrix client accessible [here](https://chat.funcptr.org/), along with some self-hosted integrations.

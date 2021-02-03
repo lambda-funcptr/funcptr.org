@@ -9,7 +9,7 @@ main :: IO ()
 main = hakyll $ do
     match "templates/*" $ compile templateBodyCompiler
 
-    match "images/*" $ do
+    match "images/**" $ do
         route   idRoute
         compile copyFileCompiler
 
@@ -25,7 +25,7 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "blog/*" $ do
+    match "blog/**" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    postCtx
@@ -42,7 +42,7 @@ main = hakyll $ do
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- recentFirst =<< loadAll "blog/**"
             let archiveCtx =
                     listField "posts" postCtx (return posts) `mappend`
                     constField "title" "Archives"            `mappend`
@@ -57,7 +57,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "posts/*"
+            posts <- recentFirst =<< loadAll "blog/**"
             projects <- loadAll "projects/*"
             let indexCtx =
                     listField "projects" indexCtx (return projects) `mappend`

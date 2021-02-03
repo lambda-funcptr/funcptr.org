@@ -257,3 +257,19 @@ header {
   display: block;
   z-index: 100;
 }
+
+pre {
+  background: whitesmoke;
+  border: darkslategray;
+  border-style: solid;
+  color: white;
+  padding: 0.5em;
+}
+
+details {
+  background: lightsalmon;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 0.5em;
+  border-radius: 10px;
+}
