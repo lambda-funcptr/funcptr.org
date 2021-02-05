@@ -17,6 +17,21 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
+    tags <- buildTags "blog/**" (fromCapture "tags/*.html")
+    tagsRules tags $ \tag pattern -> do
+        let title = "Tag: \"" ++ tag ++ "\""
+        route idRoute
+        compile $ do
+            posts <- recentFirst =<< loadAll pattern
+            let ctx = constField "title" title
+                      `mappend` listField "posts" (postCtx tags) (return posts)
+                      `mappend` defaultContext
+
+            makeItem ""
+                >>= loadAndApplyTemplate "templates/tag.html" ctx
+                >>= loadAndApplyTemplate "templates/default.html" ctx
+                >>= relativizeUrls
+
     match "js/*" $ do
         route   idRoute
         compile copyFileCompiler
@@ -28,8 +43,8 @@ main = hakyll $ do
     match "blog/**" $ do
         route $ setExtension "html"
         compile $ pandocCompiler
-            >>= loadAndApplyTemplate "templates/post.html"    postCtx
-            >>= loadAndApplyTemplate "templates/default.html" postCtx
+            >>= loadAndApplyTemplate "templates/post.html"    (postCtx tags)
+            >>= loadAndApplyTemplate "templates/default.html" (postCtx tags)
             >>= relativizeUrls
     
     match "projects/*" $ do
@@ -44,8 +59,8 @@ main = hakyll $ do
         compile $ do
             posts <- recentFirst =<< loadAll "blog/**"
             let archiveCtx =
-                    listField "posts" postCtx (return posts) `mappend`
-                    constField "title" "Archives"            `mappend`
+                    listField "posts" (postCtx tags) (return posts) `mappend`
+                    constField "title" "Archives"                   `mappend`
                     defaultContext
 
             makeItem ""
@@ -62,6 +77,7 @@ main = hakyll $ do
             let indexCtx =
                     listField "projects" indexCtx (return projects) `mappend`
                     listField "posts" indexCtx (return posts)       `mappend`
+                    tagsField "tags" tags                           `mappend`
                     defaultContext
 
             getResourceBody
@@ -74,7 +90,7 @@ main = hakyll $ do
         compile $ do
             projects <- loadAll "projects/*"
             let indexCtx =
-                    listField "projects" postCtx (return projects) `mappend`
+                    listField "projects" (postCtx tags) (return projects) `mappend`
                     defaultContext
 
             getResourceBody
@@ -89,7 +105,8 @@ main = hakyll $ do
             >>= relativizeUrls
 
 --------------------------------------------------------------------------------
-postCtx :: Context String
-postCtx =
+postCtx :: Tags -> Context String
+postCtx tags =
     dateField "date" "%B %e, %Y" `mappend`
+    tagsField "tags" tags        `mappend`
     defaultContext
