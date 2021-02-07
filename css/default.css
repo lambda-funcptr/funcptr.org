@@ -273,3 +273,17 @@ details {
   padding: 0.5em;
   border-radius: 10px;
 }
+
+div.info {
+  margin: 0.25em;
+  padding: 0.25em 1em 0.25em 1em;
+  border-radius: 0.5em;
+  background: lightcyan;
+}
+
+div.note {
+  margin: 0.25em;
+  padding: 0.25em 1em 0.25em 1em;
+  border-radius: 0.5em;
+  background: lightgoldenrodyellow;
+}
