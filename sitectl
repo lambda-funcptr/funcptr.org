@@ -10,6 +10,9 @@ if [[ "$1" == "deploy" ]]; then
     exit 0;
   fi
 
+  ./sitectl clean
+  ./sitectl build
+
   ssh -i $2 push@master.cdn.funcptr.org "mkdir -p /srv/cdn/funcptr.org"
   rsync -e "ssh -i $2" -a _site/ push@master.cdn.funcptr.org:/srv/cdn/funcptr.org/
   exit 0;
