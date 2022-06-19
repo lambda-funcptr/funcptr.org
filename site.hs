@@ -17,7 +17,7 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    tags <- buildTags "blog/**.md" (fromCapture "tags/*.html")
+    tags <- buildTags ("blog/**" .||. "archives/**") (fromCapture "tags/*.html")
     tagsRules tags $ \tag pattern -> do
         let title = "Tag: \"" ++ tag ++ "\""
         route idRoute
