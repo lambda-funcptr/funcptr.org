@@ -17,7 +17,7 @@ main = hakyll $ do
         route   idRoute
         compile compressCssCompiler
 
-    tags <- buildTags "blog/**" (fromCapture "tags/*.html")
+    tags <- buildTags "blog/**.md" (fromCapture "tags/*.html")
     tagsRules tags $ \tag pattern -> do
         let title = "Tag: \"" ++ tag ++ "\""
         route idRoute
@@ -40,7 +40,11 @@ main = hakyll $ do
         route   idRoute
         compile copyFileCompiler
 
-    match "blog/**" $ do
+    match ((complement "**.md") .&&. ("blog/**" .||. "archives/**")) $ do
+        route   idRoute
+        compile copyFileCompiler
+
+    match ("blog/**.md" .||. "archives/**.md") $ do
         route $ setExtension "html"
         compile $ pandocCompiler
             >>= loadAndApplyTemplate "templates/post.html"    (postCtx tags)
@@ -57,7 +61,7 @@ main = hakyll $ do
     create ["archive.html"] $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "blog/**"
+            posts <- recentFirst =<< loadAll ("blog/**.md" .||. "archives/**.md")
             let archiveCtx =
                     listField "posts" (postCtx tags) (return posts) `mappend`
                     constField "title" "Archives"                   `mappend`
@@ -72,7 +76,7 @@ main = hakyll $ do
     match "index.html" $ do
         route idRoute
         compile $ do
-            posts <- recentFirst =<< loadAll "blog/**"
+            posts <- recentFirst =<< loadAll ("blog/**.md" .||. "archives/**.md")
             projects <- loadAll "projects/*"
             let indexCtx =
                     listField "projects" indexCtx (return projects) `mappend`

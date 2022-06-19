@@ -1,7 +1,7 @@
 ---
 title: So you want to make yet another shoddy game engine (1/???)
 date: 2021-03-31
-tags: Gamedev,SLE
+tags: Gamedev,Kludge
 ---
 
 So, I've been making game engines on and off for a bit (and I haven't worked on mine in a while). I figured that it might be worth playing around with documenting the process for a game engine, as well as providing motiviation for me to actually finish what I'm doing.
