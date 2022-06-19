@@ -7,7 +7,7 @@ tags: Homelab, Kubernetes
 <div class="info">
 I've actually switched from this setup to a Traeflik-Ingress based setup. It took a little bit of work to move it over and figure it out (I'd argue that Traeflik's setup has marginally more documentation issues than HAProxy, but Traeflik is quite reasonable as well).
 
-The new setup is documented in [here](../../02/07/intriguing-ingress-v2.html)
+The new setup is documented in [here](../2021-02-07-intriguing-ingress-v2/intriguing-ingress-v2.html)
 </div>
 
 TLDR: I lose my mind over overly fancy nginx proxies
