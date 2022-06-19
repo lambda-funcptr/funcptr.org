@@ -1,6 +1,6 @@
 ---
 title: So you want to make yet another shoddy game engine (2/???)
-date: 2021-06-18
+date: 2022-06-18
 tags: Gamedev,Kludge
 ---
 
@@ -225,6 +225,6 @@ std::unique_ptr<Window> createWindow(const WindowInfo& info) {
 </details>
 
 And voila!
-
+ 
 ![](fig00_first_window.png)
 
